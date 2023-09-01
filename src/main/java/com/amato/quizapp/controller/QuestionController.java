@@ -15,7 +15,7 @@ public class QuestionController {
 
     @GetMapping ("/greeting")
     public String getGreeting() {
-        return "Hello Jim!";
+        return "Testing v1.0.2!";
     }
 
     @GetMapping("/allQuestions")
