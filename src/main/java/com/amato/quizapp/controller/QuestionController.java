@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 
-//comment
 @RequestMapping("/question")
 public class QuestionController {
     @Autowired
