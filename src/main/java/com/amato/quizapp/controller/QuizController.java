@@ -1,9 +1,8 @@
 package com.amato.quizapp.controller;
-import com.amato.quizapp.model.Question;
-import com.amato.quizapp.model.QuestionWrapper;
-import com.amato.quizapp.model.Response;
+import com.amato.quizapp.model.*;
 import com.amato.quizapp.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +20,15 @@ public class QuizController {
 
         return quizService.createQuiz(category, numQ);
     }
-
+    @PutMapping("/highscores/addNameHighscore/{quizId}")
+    public ResponseEntity<Object> addNameHighscore(@PathVariable int quizId, @RequestBody String name) {
+        quizService.addNameHighscore(quizId, name);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @GetMapping("/highscores/getHighscores")
+    public ResponseEntity<List<HighScores>> getHighscores() {
+        return quizService.getHighscores();
+    }
     @GetMapping("/get/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id) {
         return quizService.getQuizQuestions(id);
